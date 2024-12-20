@@ -1,10 +1,11 @@
 {
   "files": {
-    "main.css": "/Student/static/css/main.a59727b1.css",
-    "main.js": "/Student/static/js/main.cf64f293.js",
+    "main.css": "/Student/static/css/main.5fd9b9c7.css",
+    "main.js": "/Student/static/js/main.fb9ef0d6.js",
     "static/media/1.png": "/Student/static/media/1.2640c6a4ad4ff1108140.png",
     "static/media/6.png": "/Student/static/media/6.1791c1cab9ea1452549f.png",
     "static/media/physics.png": "/Student/static/media/physics.83dcec7ab545bcebfbd2.png",
+    "static/media/fon.png": "/Student/static/media/fon.e5c0cd43b8ef42b2b217.png",
     "static/media/alg.png": "/Student/static/media/alg.099f2436a9cd07207818.png",
     "static/media/math.png": "/Student/static/media/math.ef1fcf59c98f8fa8acf0.png",
     "static/media/3.png": "/Student/static/media/3.522eae42f94bc757d42f.png",
@@ -12,15 +13,14 @@
     "static/media/vmath.png": "/Student/static/media/vmath.33c2b6b85c0daa78ea9f.png",
     "static/media/4.png": "/Student/static/media/4.8c1cec5f2655e500eb4a.png",
     "static/media/2.png": "/Student/static/media/2.ad6a4e0831501eb92592.png",
-    "static/media/5.png": "/Student/static/media/5.4614e2f710fa22c6bc64.png",
     "static/media/web.png": "/Student/static/media/web.4dbf4ff7b7a2d6829e72.png",
     "static/media/cartbg.png": "/Student/static/media/cartbg.e32f9d6f9e503bae32f1.png",
     "index.html": "/Student/index.html",
-    "main.a59727b1.css.map": "/Student/static/css/main.a59727b1.css.map",
-    "main.cf64f293.js.map": "/Student/static/js/main.cf64f293.js.map"
+    "main.5fd9b9c7.css.map": "/Student/static/css/main.5fd9b9c7.css.map",
+    "main.fb9ef0d6.js.map": "/Student/static/js/main.fb9ef0d6.js.map"
   },
   "entrypoints": [
-    "static/css/main.a59727b1.css",
-    "static/js/main.cf64f293.js"
+    "static/css/main.5fd9b9c7.css",
+    "static/js/main.fb9ef0d6.js"
   ]
 }
