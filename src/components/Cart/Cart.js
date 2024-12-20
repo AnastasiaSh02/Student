@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import styles from "./Cart.module.css";
+import { Link } from 'react-router-dom';
 
 function Cart({ cartItems, onRemoveFromCart, onClearCart }) {
     const [formData, setFormData] = useState({
@@ -106,7 +107,7 @@ function Cart({ cartItems, onRemoveFromCart, onClearCart }) {
                         <div class={styles.checkboxContainer}>
                             <input type="checkbox" name="agree" checked={formData.agree} onChange={handleInputChange}/>
                             <label>
-                                <a href="/privacy"> Я согласен с политикой конфиденциальности</a>
+                                <Link to="/privacy"> Я согласен с политикой конфиденциальности </Link>
                             </label>
                             {errors.agree && <span class={styles.error}>{errors.agree}</span>}
                         </div>
