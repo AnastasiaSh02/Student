@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import styles from './Contact.module.css';
 
+
 function Contact() {
   const [formData, setFormData] = useState({
     name: '', surname: '', contactMethods: { phone: false, email: false, },
@@ -21,6 +22,7 @@ function Contact() {
   const handleSubmit = (e) => {
     e.preventDefault();
     const { phone, email } = formData.contactMethods;
+
     if (!phone && !email) {
       alert('Пожалуйста, выберите хотя бы один способ связи (Телефон или Email) и заполните соответствующее поле.');
       return;
@@ -36,9 +38,34 @@ function Contact() {
       return;
     }
 
-    alert(`Спасибо за сообщение, ${formData.name}!`);
+    const emailPattern = /^[^\s@]+@[^\s@]+\.(ru|com|org|net|gov|edu)$/i; 
+    if (email && !emailPattern.test(formData.email)) {
+        alert('Email должен быть корректным и оканчиваться на .ru, .com, .org, .net, .gov или .edu');
+        return;
+    }
+
+    const contactMethodsSummary = [
+      phone ? `Телефон: ${formData.phone}` : null,
+      email ? `Email: ${formData.email}` : null,
+    ].filter(Boolean).join("\n");
+
+    const message = `
+        Спасибо за сообщение, ${formData.name} ${formData.surname}!
+        
+        Вы указали следующие данные:
+        Возраст: ${formData.age}
+        Роль: ${formData.role}
+        Оценка сайта: ${formData.siteRating ? formData.siteRating : "не указана"}
+        Способы связи:
+        ${contactMethodsSummary}
+        Ваше сообщение:
+        ${formData.message}
+    `;
+
+    alert(message);
     localStorage.setItem('contactForm', JSON.stringify(formData));
-  }
+  };
+
 
 
   return (
@@ -75,13 +102,13 @@ function Contact() {
         {formData.contactMethods.phone && (
           <input
             type="tel" name="phone" placeholder="Номер телефона" value={formData.phone} onChange={handleChange}
-            pattern="^\+?\d{10,15}$" title="Введите номер телефона в формате +1234567890" required={formData.contactMethods.phone} />
+            pattern="^\+7\d{10}$" title="Введите номер телефона в формате +7XXXXXXXXXX (только цифры, без пробелов и скобок)" required={formData.contactMethods.phone} />
         )}
 
         {formData.contactMethods.email && (
           <input
             type="email" name="email" placeholder="Email" value={formData.email} onChange={handleChange}
-            required={formData.contactMethods.email}/>
+            required={formData.contactMethods.email} />
         )}
 
         <input

@@ -31,20 +31,37 @@ function Cart({ cartItems, onRemoveFromCart, onClearCart }) {
     const handleSubmit = (e) => {
         e.preventDefault();
         const validationErrors = validateForm();
-        if (Object.keys(validationErrors).length > 0) { setErrors(validationErrors); } 
-        else {
-            alert("Заказ успешно отправлен!");
-            setFormData({ name: "", email: "", phone: "", card: "", date: "", agree: false, });
+        if (Object.keys(validationErrors).length > 0) {
+            setErrors(validationErrors);
+        } else {
+            const message = `
+                ----------------------------
+                   Заказ успешно отправлен!
+                ----------------------------
+                Ваши данные:
+                Имя: ${formData.name}
+                Email: ${formData.email}
+                Телефон: ${formData.phone}
+                Номер карты: ${formData.card}
+                Дата оплаты: ${formData.date}
+                ----------------------------
+                Итоговая сумма: ${totalPrice}₽
+            `;
+            alert(message);
+
+            setFormData({ name: "", email: "", phone: "", card: "", date: "", agree: false });
             onClearCart();
         }
     };
 
+
+
     return (
         <div class={styles.mains}>
             <div class={styles.cartWrapper}>
-                
+
                 {/* Первый блок: Выбранные услуги и итоговая сумма */}
-                
+
                 <div class={styles.cartItemsContainer}>
                     <h2 class="animate__animated animate__zoomIn" >Корзина</h2>
                     {cartItems.length > 0 ? (
@@ -58,7 +75,7 @@ function Cart({ cartItems, onRemoveFromCart, onClearCart }) {
                                     <button class={styles.removeBtn} onClick={() => onRemoveFromCart(index)}>
                                         Удалить
                                     </button>
-                                </li> ))}
+                                </li>))}
                         </ul>
                     ) : (<p>Корзина пуста</p>)}
 
@@ -81,13 +98,13 @@ function Cart({ cartItems, onRemoveFromCart, onClearCart }) {
 
                         <div class={styles.inlineField}>
                             <label>Email:</label>
-                            <input type="email" name="email" value={formData.email} onChange={handleInputChange} placeholder="example@mail.com"/>
+                            <input type="email" name="email" value={formData.email} onChange={handleInputChange} placeholder="example@mail.com" />
                             {errors.email && <span class={styles.error}>{errors.email}</span>}
                         </div>
 
                         <div class={styles.inlineField}>
                             <label>Телефон:</label>
-                            <input type="tel" name="phone" value={formData.phone} onChange={handleInputChange} placeholder="1234567890"/>
+                            <input type="tel" name="phone" value={formData.phone} onChange={handleInputChange} placeholder="1234567890" />
                             {errors.phone && <span class={styles.error}>{errors.phone}</span>}
                         </div>
 
@@ -100,12 +117,12 @@ function Cart({ cartItems, onRemoveFromCart, onClearCart }) {
 
                         <div class={styles.inlineField}>
                             <label>Дата оплаты:</label>
-                            <input type="date" name="date" value={formData.date} onChange={handleInputChange}/>
+                            <input type="date" name="date" value={formData.date} onChange={handleInputChange} />
                             {errors.date && <span class={styles.error}>{errors.date}</span>}
                         </div>
 
                         <div class={styles.checkboxContainer}>
-                            <input type="checkbox" name="agree" checked={formData.agree} onChange={handleInputChange}/>
+                            <input type="checkbox" name="agree" checked={formData.agree} onChange={handleInputChange} />
                             <label>
                                 <Link to="/privacy"> Я согласен с политикой конфиденциальности </Link>
                             </label>
@@ -113,7 +130,7 @@ function Cart({ cartItems, onRemoveFromCart, onClearCart }) {
                         </div>
 
                         <button type="submit"
-                            class={`${styles.submitBtn} ${!formData.agree || cartItems.length === 0 ? styles.disabledBtn : "" }`}
+                            class={`${styles.submitBtn} ${!formData.agree || cartItems.length === 0 ? styles.disabledBtn : ""}`}
                             disabled={!formData.agree || cartItems.length === 0}>
                             Оплатить
                         </button>
