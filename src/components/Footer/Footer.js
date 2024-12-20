@@ -1,6 +1,6 @@
 import React from 'react';
 import styles from './Footer.module.css';
-
+import { Link } from 'react-router-dom';
 
 function Footer() {
   return (
@@ -9,9 +9,9 @@ function Footer() {
         © 2024 Студенческие Услуги. Все права защищены.
       </p>
       <div class={styles.footer_links}>
-        <a href="/privacy">Политика конфиденциальности</a>
-        <a href="/terms">Условия использования</a>
-        <a href="/contact">Свяжитесь с нами</a>
+        <Link to="/privacy">Политика конфиденциальности</Link>
+        <Link to="/terms">Условия использования</Link>
+        <Link to="/contact">Свяжитесь с нами</Link>
       </div>
     </footer>
   );
